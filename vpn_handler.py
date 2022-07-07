@@ -51,10 +51,11 @@ class VPNHandler:
 
                     os.remove(tmp_passwd)
                     if conn_to_vpn.returncode == 0:
-                        logger.info(f"Connected to {random_server}")
+                        logger.info(f"{conn_to_vpn.stdout.decode('utf-8')}\n"
+                            f"Connected to {random_server}\n")
                     else:
-                        logger.info(
-                            f"Unable to connect to {random_server}. Trying again...")
+                        logger.info(f"Oops. {conn_to_vpn.stderr.decode('utf-8')}\n"
+                            f"Unable to connect to {random_server}. Trying again...\n")
                 sleep(5)
             except KeyboardInterrupt:
                 print('[-] Keyboard interruption. See you!')
