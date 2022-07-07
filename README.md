@@ -38,7 +38,7 @@ git clone https://github.com/gingerhue/VPN_Handler_python.git
 cd VPN_Handler_python
 ```
 
-- Run the script in an interactive way:
+- Run the script in an interactive way. It will copy needed configuration files and create VPN connections.
 
 ```bash
 ./interactive_setup.py
@@ -46,10 +46,35 @@ cd VPN_Handler_python
 
 - Alternatively, use configs_handler in the helpers directory to write your own code
 
+4. **Store VPN password credentials**:
+``` bash
+secret-tool store --label='label' attribute value 
+```
+
 3. **Start the handler**:
+
+- Edit vpn_handler.py. Change attribute and value to those you came up with.
+
+- Run the script:
 
 ```bash
 ./vpn_handler.py
+```
+
+---
+### Symlink:
+> Create a symlink to the handler to run it in terminal with your alias.
+- Make the script executable:
+``` bash
+chmod +x vpn_handler.py
+```
+- Make the bin directory inside your home directory:
+``` bash
+mkdir $HOME/bin
+```
+- Create a symlink:
+``` bash
+ln -s $HOME/path/to/vpn_handler.py $HOME/bin/invoke_name
 ```
 
 ---
@@ -119,13 +144,13 @@ sudo ufw default deny outgoing
 sudo ufw default deny incoming
 ```
 
-- Go to the directory where your configuration files are kept. Open the desired config with your text editor. We need the fourth line with server's IP and port. Copy them.
+- Go to the directory where your configuration files are kept. Open the desired config with your text editor. We need the fourth line with server's IP and port. Copy IP and port.
 
 ```bash
 remote 212.102.36.150 1194
 ```
 
-- Configure restrictions that traffic goes to server's IP strictly. Last word is for protocol that you're using. TCP/UDP:
+- Configure restrictions that traffic goes to server's IP strictly. Last word is for protocol that you're using. TCP/UDP. Use the _ufw_conf.py_ script in the helpers section to automate the process for all connections.
 
 ```bash
 sudo ufw allow out to 212.102.36.150 port 1194 proto udp

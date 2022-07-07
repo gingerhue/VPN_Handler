@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import os
 from time import sleep
 import subprocess
@@ -31,8 +31,9 @@ class VPNHandler:
     @staticmethod
     def _passwd_temp_file() -> str:
         temp = tempfile.NamedTemporaryFile(mode="w+t", delete=False).name
+        # change attribute and value to those you came up with
         lookup_passwd = subprocess.run(
-            "secret-tool lookup [attribute] [value]", capture_output=True, text=True, shell=True)
+            "secret-tool lookup [your attribute] [your value]", capture_output=True, text=True, shell=True)
         with open(temp, "w") as file:
             file.write(f"vpn.secrets.password:{lookup_passwd.stdout}")
         return temp
