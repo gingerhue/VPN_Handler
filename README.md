@@ -41,7 +41,7 @@ cd VPN_Handler_python
 - Run the script in an interactive way. It will copy needed configuration files and create VPN connections.
 
 ```bash
-./interactive_setup.py
+python interactive_setup.py
 ```
 
 - Alternatively, use configs_handler in the helpers directory to write your own code
@@ -58,7 +58,7 @@ secret-tool store --label='label' attribute value
 - Run the script:
 
 ```bash
-./vpn_handler.py
+python vpn_handler.py
 ```
 
 ---
