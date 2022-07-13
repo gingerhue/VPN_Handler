@@ -90,7 +90,7 @@ ln -s $HOME/path/to/vpn_handler.py $HOME/bin/invoke_name
 1. **Disable IPv6**:
 
 ```bash
-sudo nano /etc/sysctl.conf
+sudo nano /etc/sysctl.d/101-disable_ipv6.conf
 ```
 
 - Paste the following:
